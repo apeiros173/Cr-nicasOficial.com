@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="inicio" content="width=device-width, initial-scale=1.0">
+  <title>Clasificaciones de las historias</title>
+  <style>
+    body {
+      background: #800080; /* Morado */
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .contenido {
+      background: rgba(0,0,0,0.3);
+      padding: 2em;
+      border-radius: 18px;
+      box-shadow: 0 0 18px #4b005b55;
+      max-width: 700px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main class="contenido">
+    <p>
+      Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.
+    </p>
+    <p>
+      La Edición Zeta es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas, la versión que aún no se ha escrito.
+    </p>
+    <p>
+      La Edición Zero se refiere a las versiones —o más bien, a la versión— escrita primero en una libreta. Un ejemplo de esto es la versión reboot (o reinicio), que también es considerada una Edición Zero. Lo mismo ocurre con las historias alternativas derivadas de esta. Cada Edición Zero será transcrita a un documento digital y optimizada, lo que puede hacer que las historias se sientan más cortas.
+    </p>
+    <p>
+      La Edición 1 es una recapitulación de la Edición Zeta, pero con cambios, ya sean mínimos o notorios, como puede ser la narración o el inicio del desarrollo de la historia. Estos cambios pueden alterar levemente los diálogos o las acciones de los personajes, con el fin de captar más la atención del público.
+    </p>
+    <p>
+      Por último, la Edición 2 es otra recapitulación o reconstrucción de la Edición 1. Posiblemente también puedan existir la Edición Alfa (que podría estar representada por cómics) y la Edición Beta (una posible versión animada).
+    </p>
+  </main>
+</body>
+</html>
