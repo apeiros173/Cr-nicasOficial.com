@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="inicio" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clasificaciones de las historias</title>
   <style>
     body {
@@ -25,6 +25,13 @@
       font-size: 1.1em;
       line-height: 1.6;
     }
+    iframe {
+      margin-top: 2em;
+      border-radius: 8px;
+    }
+    a {
+      color: #ffd700;
+    }
   </style>
 </head>
 <body>
@@ -44,6 +51,12 @@
     <p>
       Por último, la Edición 2 es otra recapitulación o reconstrucción de la Edición 1. Posiblemente también puedan existir la Edición Alfa (que podría estar representada por cómics) y la Edición Beta (una posible versión animada).
     </p>
+
+    <!-- Visor de PDF -->
+    <p>Puedes ver el documento relacionado aquí:</p>
+    <iframe src="clasificaciones.pdf" width="100%" height="600px"></iframe>
+
+    <p>O <a href="clasificaciones.pdf" target="_blank">abrir el PDF en una nueva pestaña</a>.</p>
   </main>
 </body>
 </html>
