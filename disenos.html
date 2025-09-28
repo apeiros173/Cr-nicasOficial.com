@@ -45,7 +45,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    nav a, .dropdown button {
+    nav a {
       color: #fff;
       margin: 0 15px;
       text-decoration: none;
@@ -54,16 +54,13 @@
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      background: none;
-      border: none;
-      cursor: pointer;
     }
 
-    nav a:hover, .dropdown button:hover {
+    nav a:hover {
       color: #4cc9f0;
     }
 
-    nav a:after, .dropdown button:after {
+    nav a:after {
       content: '';
       position: absolute;
       width: 0;
@@ -74,7 +71,7 @@
       transition: width 0.3s;
     }
 
-    nav a:hover:after, .dropdown button:hover:after {
+    nav a:hover:after {
       width: 100%;
     }
 
@@ -197,15 +194,15 @@
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
     <a href="multiversos.html">Multiversos</a>
-    <a href="disenos.html">Diseños</a>
-    <a href="animaciones.html">Animaciones</a>
-    <a href="comics.html">Cómics</a>
     <div class="dropdown">
-      <button>Diseños</button>
+      <a href="disenos.html">Diseños</a>
       <div class="dropdown-content">
+        <a href="disenos.html">Diseños Alpha</a>
         <a href="disenosbeta.html">Diseños Beta</a>
       </div>
     </div>
+    <a href="animaciones.html">Animaciones</a>
+    <a href="comics.html">Cómics</a>
   </nav>
 
   <main>
