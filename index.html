@@ -5,136 +5,201 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crónicas de Skeleton y Calavera</title>
   <style>
+    /* 🔹 Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background: #9d00ff;
-      color: #fff;
+      background: #f5f5f5;
+      color: #333;
       font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      flex-direction: column;
+      line-height: 1.6;
     }
 
-    /* Navegación */
-    .navbar {
-      background: #4b005b;
-      padding: 1em;
-      border-radius: 12px;
-      margin: 1em auto;
-      max-width: 700px;
+    /* 🔹 Encabezado */
+    header {
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 20px 0;
       text-align: center;
+      border-bottom: 3px solid #e63946;
     }
 
-    .navbar ul {
-      list-style: none;
+    header h1 {
       margin: 0;
-      padding: 0;
+      font-size: 2.5em;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    /* 🔹 Menú de navegación */
+    nav {
       display: flex;
       justify-content: center;
-      gap: 2em;
-      flex-wrap: wrap;
+      background-color: #16213e;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    .navbar a {
-      color: #ffd700;
+    nav a {
+      color: #fff;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9em;
+      position: relative;
       transition: color 0.3s;
     }
 
-    .navbar a:hover {
-      color: #ffffff;
+    nav a:hover {
+      color: #4cc9f0;
     }
 
-    .contenido {
-      background: rgba(0,0,0,0.3);
-      padding: 2em;
-      border-radius: 18px;
-      box-shadow: 0 0 18px #4b005b;
-      max-width: 700px;
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #4cc9f0;
+      transition: width 0.3s;
+    }
+
+    nav a:hover:after {
+      width: 100%;
+    }
+
+    /* 🔹 Contenido principal */
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .noticia-destacada {
+      background: #fff;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border-left: 5px solid #e63946;
+    }
+
+    .noticia-destacada h2 {
+      color: #e63946;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .noticia-destacada p {
       font-size: 1.1em;
-      line-height: 1.6;
-      margin: 0 auto 2em auto;
+      margin-bottom: 15px;
     }
 
+    /* 🔹 PDF incrustado */
     iframe {
-      margin-top: 2em;
+      width: 100%;
+      height: 600px;
+      margin-top: 20px;
       border-radius: 8px;
+      border: none;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
     }
 
-    a {
-      color: #ffF000;
-    }
-
+    /* 🔹 Footer */
     footer {
-      margin-top: 2em;
+      background-color: #1a1a2e;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
-      font-size: 0.9em;
+      border-top: 3px solid #e63946;
     }
 
-    .redes-sociales ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 1em;
+    footer p {
+      margin-bottom: 10px;
     }
 
-    .redes-sociales a {
-      color: #ffF000;
+    footer a {
+      color: #4cc9f0;
+      margin: 0 10px;
       text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .noticia-destacada {
+        padding: 15px;
+      }
+
+      .noticia-destacada h2 {
+        font-size: 1.4em;
+      }
+
+      iframe {
+        height: 400px;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Crónicas de Skeleton y Calavera</h1>
+  </header>
 
-  <!-- Menú de navegación -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="personajes.html">Personajes</a></li>
-    </ul>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="personajes.html">Personajes</a>
   </nav>
 
-  <!-- Contenido principal -->
-  <main class="contenido">
-    <h1>CRÓNICAS DE SKELETON Y CALAVERA OFICIAL</h1>
-    <p>
-      Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.
-    </p>
-    <p>
-      La Edición Zeta es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas, la versión que aún no se ha escrito.
-    </p>
-    <p>
-      La Edición Zero se refiere a las versiones —o más bien, a la versión escrita primero en una libreta—. Un ejemplo de esto es la versión reboot (o reinicio), que también es considerada una Edición Zero. Lo mismo ocurre con las historias alternativas derivadas de esta. Cada Edición Zero será transcrita a un documento digital y optimizada, lo que puede hacer que las historias se sientan más cortas.
-    </p>
-    <p>
-      La Edición 1 es una recapitulación de la Edición Zeta, pero con cambios, ya sean mínimos o notorios, como puede ser la narración o el inicio del desarrollo de la historia. Estos cambios pueden alterar levemente los diálogos o las acciones de los personajes, con el fin de captar más la atención del público.
-    </p>
-    <p>
-      Por último, la Edición 2 es otra recapitulación o reconstrucción de la Edición 1. Posiblemente también puedan existir la Edición Alfa (que podría estar representada por cómics) y la Edición Beta (una posible versión animada).
-    </p>
+  <main>
+    <section class="noticia-destacada">
+      <h2>Clasificaciones de las historias</h2>
+      <p>
+        Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.
+      </p>
+      <p>
+        La <strong>Edición Zeta</strong> es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas, la versión que aún no se ha escrito.
+      </p>
+      <p>
+        La <strong>Edición Zero</strong> se refiere a las versiones —o más bien, a la versión escrita primero en una libreta—. Un ejemplo de esto es la versión reboot (o reinicio), que también es considerada una Edición Zero. Lo mismo ocurre con las historias alternativas derivadas de esta. Cada Edición Zero será transcrita a un documento digital y optimizada, lo que puede hacer que las historias se sientan más cortas.
+      </p>
+      <p>
+        La <strong>Edición 1</strong> es una recapitulación de la Edición Zeta, pero con cambios, ya sean mínimos o notorios, como puede ser la narración o el inicio del desarrollo de la historia. Estos cambios pueden alterar levemente los diálogos o las acciones de los personajes, con el fin de captar más la atención del público.
+      </p>
+      <p>
+        Por último, la <strong>Edición 2</strong> es otra recapitulación o reconstrucción de la Edición 1. Posiblemente también puedan existir la Edición Alfa (que podría estar representada por cómics) y la Edición Beta (una posible versión animada).
+      </p>
 
-    <!-- Visor de PDF -->
-    <p>Puedes ver el documento relacionado aquí:</p>
-    <iframe src="0_edition_cronicas_de_skeleton_y_calavera.pdf" width="100%" height="600px"></iframe>
-    <p>O <a href="0_edition_cronicas_de_skeleton_y_calavera.pdf" target="_blank">abrir el PDF en una nueva pestaña</a>.</p>
-
-    <!-- Footer -->
-    <footer>
-      <div class="redes-sociales">
-        <h3>Síguenos en:</h3>
-        <ul>
-          <li><a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a></li>
-          <li><a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a></li>
-          <li><a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a></li>
-        </ul>
-      </div>
-    </footer>
-
+      <!-- Visor de PDF -->
+      <p><em>Puedes ver el documento relacionado aquí:</em></p>
+      <iframe src="0_edition_cronicas_de_skeleton_y_calavera.pdf"></iframe>
+      <p>O <a href="0_edition_cronicas_de_skeleton_y_calavera.pdf" target="_blank">abrir el PDF en una nueva pestaña</a>.</p>
+    </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Crónicas de Skeleton y Calavera | Todos los derechos reservados</p>
+    <p>
+      <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
+      <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
+      <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
+    </p>
+  </footer>
 </body>
 </html>
