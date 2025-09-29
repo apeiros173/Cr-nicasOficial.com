@@ -1,188 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crónicas de Skeleton y Calavera</title>
-  <style>
-    body {
-      background: #f5f5f5;
-      color: #333;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crónicas de Skeleton y Calavera</title>
+<style>
+  body {
+    background: #f5f5f5;
+    color: #333;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
 
-    header {
-      background-color: #36006d;
-      color: #fff;
-      padding: 1.5rem 0;
-      text-align: center;
-      border-bottom: 3px solid #9000ff;
-    }
+  header {
+    background-color: #36006d;
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 3px solid #9000ff;
+  }
 
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-    }
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background-color: #36006d;
-      padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 10px;
-    }
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #36006d;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: nowrap; /* mantener todos en la misma fila */
+  }
 
-    nav a {
-      color: #fff;
-      margin: 0 0.8rem;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      position: relative;
-      transition: color 0.3s;
-      white-space: nowrap;
-    }
+  nav a {
+    color: #fff;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: relative;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
 
-    nav a:hover { color: #4cc9f0; }
-    nav a:after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -4px;
-      left: 0;
-      background-color: #4cc9f0;
-      transition: width 0.3s;
-    }
-    nav a:hover:after { width: 100%; }
+  nav a:hover { color: #4cc9f0; }
+  nav a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #4cc9f0;
+    transition: width 0.3s;
+  }
+  nav a:hover:after { width: 100%; }
 
-    main {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+  .dropdown { position: relative; display: inline-block; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #36006d;
+    min-width: 160px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    border-radius: 6px;
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    text-transform: none;
+  }
+  .dropdown-content a:hover { background-color: #4cc9f0; color: #36006d; }
+  .dropdown:hover .dropdown-content { display: block; }
 
-    .noticia-destacada {
-      background: #fff;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      border-radius: 6px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      border-left: 5px solid #36006d;
-    }
+  main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
 
-    .noticia-destacada h2 {
-      color: #e63946;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
+  .noticia-destacada {
+    background: #fff;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 5px solid #36006d;
+  }
 
-    #pdf-viewer {
-      width: 100%;
-      height: 60vh;
-      border: none;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-      border-radius: 8px;
-    }
+  .noticia-destacada h2 {
+    color: #e63946;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
 
-    footer {
-      background-color: #36006d;
-      color: #fff;
-      padding: 2.5rem 1rem;
-      text-align: center;
-      border-top: 3px solid #9000ff;
-    }
+  #pdf-viewer canvas {
+    width: 100% !important; /* escalar al ancho disponible */
+    height: auto !important;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+  }
 
-    footer p {
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
-    }
+  footer {
+    background-color: #36006d;
+    color: #fff;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-top: 3px solid #9000ff;
+  }
 
-    footer a {
-      color: #4cc9f0;
-      margin: 0 0.5rem;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
+  footer p { margin-bottom: 0.5rem; font-size: 0.9rem; }
+  footer a {
+    color: #4cc9f0;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  footer a:hover { text-decoration: underline; }
 
-    footer a:hover { text-decoration: underline; }
-  </style>
+  @media (max-width: 768px) {
+    header h1 { font-size: 1.8rem; }
+    nav a { margin: 0 0.5rem; font-size: 0.85rem; }
+    .noticia-destacada h2 { font-size: 1.3rem; }
+  }
 
-  <!-- PDF.js CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.min.js"></script>
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.5rem; }
+    nav a { margin: 0 0.3rem; font-size: 0.8rem; }
+    .noticia-destacada h2 { font-size: 1.2rem; }
+  }
+</style>
+
+<!-- PDF.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Crónicas de Skeleton y Calavera</h1>
-  </header>
+<header>
+  <h1>Crónicas de Skeleton y Calavera</h1>
+</header>
 
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="personajes.html">Personajes</a>
-    <a href="multiversos.html">Multiversos</a>
-    <div class="dropdown">
-      <a href="disenos.html">Diseños</a>
-      <div class="dropdown-content">
-        <a href="disenos.html">Diseños Alpha</a>
-        <a href="disenosbeta.html">Diseños Beta</a>
-      </div>
+<nav>
+  <a href="index.html">Inicio</a>
+  <a href="personajes.html">Personajes</a>
+  <a href="multiversos.html">Multiversos</a>
+  <div class="dropdown">
+    <a href="disenos.html">Diseños</a>
+    <div class="dropdown-content">
+      <a href="disenos.html">Diseños Alpha</a>
+      <a href="disenosbeta.html">Diseños Beta</a>
     </div>
-    <a href="animaciones.html">Animaciones</a>
-    <a href="comics.html">Cómics</a>
-  </nav>
+  </div>
+  <a href="animaciones.html">Animaciones</a>
+  <a href="comics.html">Cómics</a>
+</nav>
 
-  <main>
-    <section class="noticia-destacada">
-      <h2>Clasificaciones de las historias</h2>
-      <p>Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.</p>
-      <p><strong>Edición Zeta</strong> es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas.</p>
-      
-      <!-- PDF.js Viewer -->
-      <canvas id="pdf-viewer"></canvas>
-    </section>
-  </main>
+<main>
+<section class="noticia-destacada">
+  <h2>Clasificaciones de las historias</h2>
+  <p>Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.</p>
 
-  <footer>
-    <p>&copy; 2025 Crónicas de Skeleton y Calavera® | Todos los derechos reservados</p>
-    <p>
-      <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
-      <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
-      <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
-    </p>
-  </footer>
+  <div id="pdf-viewer"></div> <!-- Aquí se renderizará el PDF -->
+</section>
+</main>
 
-  <script>
-    const url = '0_edition_cronicas_de_skeleton_y_calavera.pdf'; // tu PDF
+<footer>
+  <p>&copy; 2025 Crónicas de Skeleton y Calavera® | Todos los derechos reservados</p>
+  <p>
+    <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
+    <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
+    <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
+  </p>
+</footer>
 
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.worker.min.js';
+<script>
+const url = '0_edition_cronicas_de_skeleton_y_calavera.pdf';
+const pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.worker.min.js';
 
-    const canvas = document.getElementById('pdf-viewer');
-    const ctx = canvas.getContext('2d');
+const container = document.getElementById('pdf-viewer');
 
-    pdfjsLib.getDocument(url).promise.then(pdfDoc => {
-      pdfDoc.getPage(1).then(page => {
-        const viewport = page.getViewport({ scale: 1.5 });
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+  const scale = 1.5;
+  for(let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++){
+    pdfDoc.getPage(pageNum).then(page => {
+      const viewport = page.getViewport({ scale });
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      container.appendChild(canvas);
 
-        const renderContext = {
-          canvasContext: ctx,
-          viewport: viewport
-        };
-        page.render(renderContext);
-      });
+      page.render({ canvasContext: ctx, viewport: viewport });
     });
-  </script>
+  }
+});
+</script>
 </body>
 </html>
