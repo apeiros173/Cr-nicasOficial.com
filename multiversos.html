@@ -39,12 +39,12 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
-      flex-wrap: wrap; /* ✅ Permite que los links bajen de línea en pantallas pequeñas */
+      flex-wrap: wrap; /* ✅ Se acomoda en varias líneas si es necesario */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 8px; /* ✅ Espaciado entre enlaces */
+      gap: 8px;
     }
 
     nav a {
@@ -56,7 +56,7 @@
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      white-space: nowrap; /* ✅ Evita cortes de texto feos */
+      white-space: nowrap; /* ✅ Evita que se corte el texto */
     }
 
     nav a:hover {
@@ -176,8 +176,14 @@
         font-size: 0.8em;
         margin: 2px;
       }
+      .personaje {
+        padding: 12px;
+      }
       .personaje h2 {
         font-size: 1.2em;
+      }
+      .personaje p {
+        font-size: 1em;
       }
     }
   </style>
