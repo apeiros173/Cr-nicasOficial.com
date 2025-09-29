@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crónicas de Skeleton y Calavera</title>
+  <title>Multiveros de Crónicas de Skeleton y Calavera</title>
   <style>
     /* 🔹 Reset básico */
     * {
@@ -23,13 +23,14 @@
     header {
       background-color: #36006d;
       color: #fff;
-      padding: 1.5rem 0;
+      padding: 20px 0;
       text-align: center;
       border-bottom: 3px solid #9000ff;
     }
 
     header h1 {
-      font-size: 2.5rem;
+      margin: 0;
+      font-size: 2.5em;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: -1px;
@@ -38,24 +39,21 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       background-color: #36006d;
-      padding: 0.8rem 0;
+      padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 10px; /* separa los enlaces */
     }
 
     nav a {
       color: #fff;
-      margin: 0 0.8rem;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      white-space: nowrap; /* evita que se rompa el texto */
     }
 
     nav a:hover {
@@ -67,7 +65,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      bottom: -4px;
+      bottom: -5px;
       left: 0;
       background-color: #4cc9f0;
       transition: width 0.3s;
@@ -77,98 +75,59 @@
       width: 100%;
     }
 
-    /* 🔹 Dropdown */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #36006d;
-      min-width: 160px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-      border-radius: 6px;
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      color: #fff;
-      padding: 10px 15px;
-      text-decoration: none;
-      display: block;
-      font-size: 0.9rem;
-      text-transform: none;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #4cc9f0;
-      color: #36006d;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
     /* 🔹 Contenido principal */
     main {
       max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .noticia-destacada {
+    .personaje {
       background: #fff;
-      margin: 2rem auto;
-      padding: 1.5rem;
+      margin: 30px auto;
+      padding: 25px;
       border-radius: 6px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
       border-left: 5px solid #36006d;
     }
 
-    .noticia-destacada h2 {
+    .personaje h2 {
       color: #e63946;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
+      font-size: 1.8em;
+      margin-bottom: 15px;
       font-weight: 800;
       text-transform: uppercase;
     }
 
-    .noticia-destacada p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+    .personaje p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
     }
 
-    /* 🔹 PDF incrustado */
-    iframe {
-      width: 100%;
-      height: 60vh;
-      margin-top: 1rem;
+    .personaje img {
+      max-width: 100%;
       border-radius: 8px;
-      border: none;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+      margin-top: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
 
     /* 🔹 Footer */
     footer {
       background-color: #36006d;
       color: #fff;
-      padding: 2.5rem 1rem;
+      padding: 40px 20px;
       text-align: center;
       border-top: 3px solid #9000ff;
     }
 
     footer p {
-      margin-bottom: 0.5rem;
-      font-size: 0.9rem;
+      margin-bottom: 10px;
     }
 
     footer a {
       color: #4cc9f0;
-      margin: 0 0.5rem;
+      margin: 0 10px;
       text-decoration: none;
-      font-size: 0.9rem;
     }
 
     footer a:hover {
@@ -176,61 +135,17 @@
     }
 
     /* 🔹 Responsive */
-    @media (max-width: 1024px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      .noticia-destacada h2 {
-        font-size: 1.5rem;
-      }
-    }
-
     @media (max-width: 768px) {
       header h1 {
-        font-size: 1.8rem;
+        font-size: 1.8em;
       }
 
-      nav a {
-        margin: 0 0.5rem;
-        font-size: 0.85rem;
+      .personaje {
+        padding: 15px;
       }
 
-      .noticia-destacada {
-        padding: 1rem;
-      }
-
-      .noticia-destacada h2 {
-        font-size: 1.3rem;
-      }
-
-      iframe {
-        height: 50vh;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-
-      /* Mantener menú horizontal */
-      nav {
-        flex-direction: row; /* horizontal */
-        flex-wrap: wrap; /* si no cabe, se ajusta ligeramente */
-        justify-content: center;
-        gap: 6px;
-      }
-
-      nav a {
-        margin: 0 4px;
-      }
-
-      .noticia-destacada h2 {
-        font-size: 1.2rem;
-      }
-
-      iframe {
-        height: 40vh;
+      .personaje h2 {
+        font-size: 1.4em;
       }
     }
   </style>
@@ -243,35 +158,29 @@
   <nav>
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
-    <a href="multiversos.html">Multiversos</a>
-    <div class="dropdown">
-      <a href="disenos.html">Diseños</a>
-      <div class="dropdown-content">
-        <a href="disenos.html">Diseños Alpha</a>
-        <a href="disenosbeta.html">Diseños Beta</a>
-      </div>
-    </div>
+     <a href="multiversos.html">Multiversos</a>
+    <a href="disenos.html">Diseños</a>
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
   </nav>
 
   <main>
-    <section class="noticia-destacada">
-      <h2>Clasificaciones de las historias</h2>
-      <p>Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.</p>
-      <p><strong>Edición Zeta</strong> es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas, la versión que aún no se ha escrito.</p>
-      <p><strong>Edición Zero</strong> se refiere a las versiones —o más bien, a la versión escrita primero en una libreta—. Un ejemplo de esto es la versión reboot, que también es considerada una Edición Zero. Cada Edición Zero será transcrita a un documento digital y optimizada.</p>
-      <p><strong>Edición 1</strong> es una recapitulación de la Edición Zeta, pero con cambios mínimos o notorios, como la narración o los diálogos de los personajes, para captar más atención del público.</p>
-      <p><strong>Edición 2</strong> es otra recapitulación o reconstrucción de la Edición 1. También podrían existir la Edición Alfa (cómics) y la Edición Beta (animada).</p>
-
-      <p><em>Puedes ver el documento relacionado aquí:</em></p>
-      <iframe src="0_edition_cronicas_de_skeleton_y_calavera.pdf"></iframe>
-      <p>O <a href="0_edition_cronicas_de_skeleton_y_calavera.pdf" target="_blank">abrir el PDF en una nueva pestaña</a>.</p>
+    <section class="personaje">
+      <h2>Skeleton</h2>
+      <p>
+        Skeleton en el universo Zeta no se sabe nada de él, sólo que es alguien que vivía en la dimensión espejo 
+        y que es la contraparte de Calavera. Mientras que desde la versión Zero en adelante, es considerado el 
+        hermano de Calavera. El hijo en el medio, hijo de Dark Bones (su padre demonio) y Evangeline (su madre 
+        humana fallecida). Skeleton en las crónicas de las versiones Zeta, 1 y 2, tiene un hijo llamado Damián 
+        que, al casarse con una humana, se convierte en semi-demonio. Skeleton decidió que su nombre humano 
+        fuera Ethan Marrow. Actualmente no se le ha dado una edad concreta a ningún personaje.
+      </p>
     </section>
+  
   </main>
 
   <footer>
-    <p>&copy; 2025 Crónicas de Skeleton y Calavera® | Todos los derechos reservados</p>
+    <p>&copy; 2025 Crónicas de Skeleton y Calavera | Todos los derechos reservados</p>
     <p>
       <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
       <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
