@@ -1,214 +1,282 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crónicas de Skeleton y Calavera</title>
-<style>
-  body {
-    background: #f5f5f5;
-    color: #333;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crónicas de Skeleton y Calavera</title>
+  <style>
+    /* 🔹 Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  header {
-    background-color: #36006d;
-    color: #fff;
-    padding: 1.5rem 0;
-    text-align: center;
-    border-bottom: 3px solid #9000ff;
-  }
+    body {
+      background: #f5f5f5;
+      color: #333;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-  header h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-  }
+    /* 🔹 Encabezado */
+    header {
+      background-color: #36006d;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+      border-bottom: 3px solid #9000ff;
+    }
 
-  nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #36006d;
-    padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    flex-wrap: nowrap; /* mantener todos en la misma fila */
-  }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
 
-  nav a {
-    color: #fff;
-    margin: 0 1rem;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    position: relative;
-    transition: color 0.3s;
-    white-space: nowrap;
-  }
+    /* 🔹 Menú de navegación */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: #36006d;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 10px; /* separa los enlaces */
+    }
 
-  nav a:hover { color: #4cc9f0; }
-  nav a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: #4cc9f0;
-    transition: width 0.3s;
-  }
-  nav a:hover:after { width: 100%; }
+    nav a {
+      color: #fff;
+      margin: 0 0.8rem;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      position: relative;
+      transition: color 0.3s;
+      white-space: nowrap; /* evita que se rompa el texto */
+    }
 
-  .dropdown { position: relative; display: inline-block; }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #36006d;
-    min-width: 160px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    border-radius: 6px;
-    z-index: 1;
-  }
-  .dropdown-content a {
-    color: #fff;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.9rem;
-    text-transform: none;
-  }
-  .dropdown-content a:hover { background-color: #4cc9f0; color: #36006d; }
-  .dropdown:hover .dropdown-content { display: block; }
+    nav a:hover {
+      color: #4cc9f0;
+    }
 
-  main {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
+    nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #4cc9f0;
+      transition: width 0.3s;
+    }
 
-  .noticia-destacada {
-    background: #fff;
-    margin: 2rem auto;
-    padding: 1.5rem;
-    border-radius: 6px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    border-left: 5px solid #36006d;
-  }
+    nav a:hover:after {
+      width: 100%;
+    }
 
-  .noticia-destacada h2 {
-    color: #e63946;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+    /* 🔹 Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-  #pdf-viewer canvas {
-    width: 100% !important; /* escalar al ancho disponible */
-    height: auto !important;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-  }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36006d;
+      min-width: 160px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      z-index: 1;
+    }
 
-  footer {
-    background-color: #36006d;
-    color: #fff;
-    padding: 2.5rem 1rem;
-    text-align: center;
-    border-top: 3px solid #9000ff;
-  }
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9rem;
+      text-transform: none;
+    }
 
-  footer p { margin-bottom: 0.5rem; font-size: 0.9rem; }
-  footer a {
-    color: #4cc9f0;
-    margin: 0 0.5rem;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  footer a:hover { text-decoration: underline; }
+    .dropdown-content a:hover {
+      background-color: #4cc9f0;
+      color: #36006d;
+    }
 
-  @media (max-width: 768px) {
-    header h1 { font-size: 1.8rem; }
-    nav a { margin: 0 0.5rem; font-size: 0.85rem; }
-    .noticia-destacada h2 { font-size: 1.3rem; }
-  }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-  @media (max-width: 480px) {
-    header h1 { font-size: 1.5rem; }
-    nav a { margin: 0 0.3rem; font-size: 0.8rem; }
-    .noticia-destacada h2 { font-size: 1.2rem; }
-  }
-</style>
+    /* 🔹 Contenido principal */
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-<!-- PDF.js CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.min.js"></script>
+    .noticia-destacada {
+      background: #fff;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      border-left: 5px solid #36006d;
+    }
+
+    .noticia-destacada h2 {
+      color: #e63946;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .noticia-destacada p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* 🔹 PDF incrustado */
+    iframe {
+      width: 100%;
+      height: 60vh;
+      margin-top: 1rem;
+      border-radius: 8px;
+      border: none;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    }
+
+    /* 🔹 Footer */
+    footer {
+      background-color: #36006d;
+      color: #fff;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      border-top: 3px solid #9000ff;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #4cc9f0;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* 🔹 Responsive */
+    @media (max-width: 1024px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .noticia-destacada h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        margin: 0 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .noticia-destacada {
+        padding: 1rem;
+      }
+
+      .noticia-destacada h2 {
+        font-size: 1.3rem;
+      }
+
+      iframe {
+        height: 50vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      /* Mantener menú horizontal */
+      nav {
+        flex-direction: row; /* horizontal */
+        flex-wrap: wrap; /* si no cabe, se ajusta ligeramente */
+        justify-content: center;
+        gap: 6px;
+      }
+
+      nav a {
+        margin: 0 4px;
+      }
+
+      .noticia-destacada h2 {
+        font-size: 1.2rem;
+      }
+
+      iframe {
+        height: 40vh;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Crónicas de Skeleton y Calavera</h1>
-</header>
+  <header>
+    <h1>Crónicas de Skeleton y Calavera</h1>
+  </header>
 
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="personajes.html">Personajes</a>
-  <a href="multiversos.html">Multiversos</a>
-  <div class="dropdown">
-    <a href="disenos.html">Diseños</a>
-    <div class="dropdown-content">
-      <a href="disenos.html">Diseños Alpha</a>
-      <a href="disenosbeta.html">Diseños Beta</a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="personajes.html">Personajes</a>
+    <a href="multiversos.html">Multiversos</a>
+    <div class="dropdown">
+      <a href="disenos.html">Diseños</a>
+      <div class="dropdown-content">
+        <a href="disenos.html">Diseños Alpha</a>
+        <a href="disenosbeta.html">Diseños Beta</a>
+      </div>
     </div>
-  </div>
-  <a href="animaciones.html">Animaciones</a>
-  <a href="comics.html">Cómics</a>
-</nav>
+    <a href="animaciones.html">Animaciones</a>
+    <a href="comics.html">Cómics</a>
+  </nav>
 
-<main>
-<section class="noticia-destacada">
-  <h2>Clasificaciones de las historias</h2>
-  <p>Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.</p>
+  <main>
+    <section class="noticia-destacada">
+      <h2>Clasificaciones de las historias</h2>
+      <p>Primero que nada, existen cuatro clasificaciones de las historias: Edición Zeta, Edición Zero, Edición 1 y Edición 2.</p>
+      <p><strong>Edición Zeta</strong> es la primera versión de la historia; se podría decir que es la versión "prime" de Crónicas, la versión que aún no se ha escrito.</p>
+      <p><strong>Edición Zero</strong> se refiere a las versiones —o más bien, a la versión escrita primero en una libreta—. Un ejemplo de esto es la versión reboot, que también es considerada una Edición Zero. Cada Edición Zero será transcrita a un documento digital y optimizada.</p>
+      <p><strong>Edición 1</strong> es una recapitulación de la Edición Zeta, pero con cambios mínimos o notorios, como la narración o los diálogos de los personajes, para captar más atención del público.</p>
+      <p><strong>Edición 2</strong> es otra recapitulación o reconstrucción de la Edición 1. También podrían existir la Edición Alfa (cómics) y la Edición Beta (animada).</p>
 
-  <div id="pdf-viewer"></div> <!-- Aquí se renderizará el PDF -->
-</section>
-</main>
+      <p><em>Puedes ver el documento relacionado aquí:</em></p>
+      <iframe src="0_edition_cronicas_de_skeleton_y_calavera.pdf"></iframe>
+      <p>O <a href="0_edition_cronicas_de_skeleton_y_calavera.pdf" target="_blank">abrir el PDF en una nueva pestaña</a>.</p>
+    </section>
+  </main>
 
-<footer>
-  <p>&copy; 2025 Crónicas de Skeleton y Calavera® | Todos los derechos reservados</p>
-  <p>
-    <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
-    <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
-    <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
-  </p>
-</footer>
-
-<script>
-const url = '0_edition_cronicas_de_skeleton_y_calavera.pdf';
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.worker.min.js';
-
-const container = document.getElementById('pdf-viewer');
-
-pdfjsLib.getDocument(url).promise.then(pdfDoc => {
-  const scale = 1.5;
-  for(let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++){
-    pdfDoc.getPage(pageNum).then(page => {
-      const viewport = page.getViewport({ scale });
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
-      container.appendChild(canvas);
-
-      page.render({ canvasContext: ctx, viewport: viewport });
-    });
-  }
-});
-</script>
+  <footer>
+    <p>&copy; 2025 Crónicas de Skeleton y Calavera® | Todos los derechos reservados</p>
+    <p>
+      <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
+      <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
+      <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
+    </p>
+  </footer>
 </body>
 </html>
