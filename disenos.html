@@ -39,15 +39,15 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
-      flex-wrap: wrap; /* permite que los links bajen de línea */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       gap: 8px;
+      flex-wrap: wrap;
     }
 
-    nav a {
+    nav a, .dropdown button {
       color: #fff;
       margin: 5px 10px;
       text-decoration: none;
@@ -56,27 +56,30 @@
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      white-space: normal;
-      word-break: break-word;
-      text-align: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 4px;
     }
 
-    nav a:hover {
+    nav a:hover, .dropdown button:hover {
       color: #4cc9f0;
+      background: rgba(76, 201, 240, 0.1);
     }
 
-    nav a:after {
+    nav a:after, .dropdown button:after {
       content: '';
       position: absolute;
       width: 0;
       height: 2px;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       background-color: #4cc9f0;
       transition: width 0.3s;
     }
 
-    nav a:hover:after {
+    nav a:hover:after, .dropdown button:hover:after {
       width: 100%;
     }
 
@@ -111,37 +114,8 @@
       padding-left: 20px;
     }
 
-    .dropdown:hover .dropdown-content {
+    .dropdown-content.show {
       display: block;
-    }
-
-    /* 🔹 Responsive */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      nav a {
-        font-size: 0.85em;
-        margin: 4px 6px;
-      }
-
-      .dropdown-content {
-        position: static;   /* evita que se corte en pantallas chicas */
-        box-shadow: none;
-        border-radius: 0;
-        min-width: 100%;
-      }
-
-      .dropdown-content a {
-        padding: 8px;
-        text-align: center;
-      }
-
-      header h1 {
-        font-size: 1.8em;
-      }
     }
 
     /* 🔹 Contenido principal */
@@ -202,6 +176,30 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+      }
+
+      nav a, .dropdown button {
+        font-size: 0.85em;
+        margin: 4px 6px;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        min-width: 100%;
+      }
+
+      .dropdown-content a {
+        padding: 8px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -213,13 +211,16 @@
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
     <a href="multiversos.html">Multiversos</a>
+
+    <!-- Dropdown de Diseños -->
     <div class="dropdown">
-      <a href="disenos.html">Diseños</a>
+      <button onclick="toggleDropdown(event)">Diseños</button>
       <div class="dropdown-content">
         <a href="disenos.html">Diseños Alpha</a>
         <a href="disenosbeta.html">Diseños Beta</a>
       </div>
     </div>
+
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
   </nav>
@@ -246,5 +247,22 @@
       <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
     </p>
   </footer>
+
+  <script>
+    // Toggle dropdown al hacer click
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdown = event.currentTarget.nextElementSibling;
+      dropdown.classList.toggle("show");
+    }
+
+    // Cerrar dropdown si se hace click fuera
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropdown > button')) {
+        const dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(dd => dd.classList.remove('show'));
+      }
+    }
+  </script>
 </body>
 </html>
