@@ -39,21 +39,26 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
+      flex-wrap: wrap; /* permite que los links bajen de línea */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 8px;
     }
 
     nav a {
       color: #fff;
-      margin: 0 15px;
+      margin: 5px 10px;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
+      white-space: normal;
+      word-break: break-word;
+      text-align: center;
     }
 
     nav a:hover {
@@ -108,6 +113,35 @@
 
     .dropdown:hover .dropdown-content {
       display: block;
+    }
+
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.85em;
+        margin: 4px 6px;
+      }
+
+      .dropdown-content {
+        position: static;   /* evita que se corte en pantallas chicas */
+        box-shadow: none;
+        border-radius: 0;
+        min-width: 100%;
+      }
+
+      .dropdown-content a {
+        padding: 8px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
     }
 
     /* 🔹 Contenido principal */
@@ -167,21 +201,6 @@
 
     footer a:hover {
       text-decoration: underline;
-    }
-
-    /* 🔹 Responsive */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-
-      .personaje {
-        padding: 15px;
-      }
-
-      .personaje h2 {
-        font-size: 1.4em;
-      }
     }
   </style>
 </head>
