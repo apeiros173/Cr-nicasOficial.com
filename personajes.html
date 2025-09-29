@@ -19,7 +19,6 @@
       line-height: 1.6;
     }
 
-    /* 🔹 Encabezado */
     header {
       background-color: #36006d;
       color: #fff;
@@ -39,7 +38,7 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
-      flex-wrap: wrap; /* ✅ permite que los links bajen de línea */
+      flex-wrap: wrap;
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
@@ -56,9 +55,10 @@
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      white-space: normal; /* ✅ deja que el texto se divida si es largo */
+      white-space: normal;
       word-break: break-word;
       text-align: center;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -87,7 +87,7 @@
     }
 
     .dropdown-content {
-      display: none;
+      display: none; /* Oculto por defecto */
       position: absolute;
       background-color: #36006d;
       min-width: 180px;
@@ -111,7 +111,8 @@
       padding-left: 20px;
     }
 
-    .dropdown:hover .dropdown-content {
+    /* 🔹 Clase para mostrar el menú */
+    .show {
       display: block;
     }
 
@@ -128,7 +129,7 @@
       }
 
       .dropdown-content {
-        position: static;   /* ✅ evita que se corte en pantallas chicas */
+        position: static;
         box-shadow: none;
         border-radius: 0;
         min-width: 100%;
@@ -208,7 +209,7 @@
   <nav>
     <a href="index.html">Inicio</a>
     <div class="dropdown">
-      <a href="personajes.html">Personajes</a>
+      <a onclick="toggleDropdown(event)">Personajes</a>
       <div class="dropdown-content">
         <a href="personajes.html">Principal</a>
         <a href="protas.html">Protagonistas</a>
@@ -257,5 +258,21 @@
       <a href="https://www.facebook.com/share/g/17W9DnHKzi/">Facebook Group</a>
     </p>
   </footer>
+
+  <script>
+    function toggleDropdown(event) {
+      event.preventDefault(); // Evita que el link se abra
+      const dropdown = event.currentTarget.nextElementSibling;
+      dropdown.classList.toggle("show");
+    }
+
+    // Cierra el dropdown si se hace clic fuera
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropdown > a')) {
+        const dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach(dd => dd.classList.remove('show'));
+      }
+    }
+  </script>
 </body>
 </html>
