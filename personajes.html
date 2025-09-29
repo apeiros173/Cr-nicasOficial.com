@@ -44,8 +44,6 @@
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       gap: 8px;
-      position: relative; /* Para que los dropdowns se posicionen correctamente */
-      z-index: 100;
     }
 
     nav a, .dropdown button {
@@ -91,14 +89,12 @@
     }
 
     .dropdown-content {
-      display: none; /* Oculto por defecto */
-      position: absolute; /* Flota sobre el menú */
-      top: 100%; /* Justo debajo del botón */
-      left: 0;
+      display: none; /* oculto por defecto */
+      position: absolute;
       background-color: #36006d;
       min-width: 180px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      z-index: 1000;
+      z-index: 1;
       border-radius: 0 0 4px 4px;
     }
 
@@ -117,34 +113,8 @@
       padding-left: 20px;
     }
 
-    /* 🔹 Clase para mostrar el menú */
     .show {
       display: block;
-    }
-
-    /* 🔹 Responsive */
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-
-      nav a, .dropdown button {
-        font-size: 0.85em;
-        margin: 4px 6px;
-      }
-
-      .dropdown-content {
-        position: static; /* Para pantallas pequeñas */
-        box-shadow: none;
-        border-radius: 0;
-        min-width: 100%;
-      }
-
-      .dropdown-content a {
-        padding: 8px;
-        text-align: center;
-      }
     }
 
     /* 🔹 Contenido principal */
@@ -206,6 +176,30 @@
       text-decoration: underline;
     }
 
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .dropdown-content {
+        position: static; /* dentro del flujo del menú en móviles */
+        min-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .dropdown-content a {
+        text-align: left;
+        padding: 12px 15px;
+      }
+
+      .dropdown button {
+        width: 100%;
+        text-align: left;
+      }
+    }
   </style>
 </head>
 <body>
@@ -273,6 +267,7 @@
       dropdown.classList.toggle("show");
     }
 
+    // Cierra el dropdown al hacer clic fuera
     window.onclick = function(event) {
       if (!event.target.matches('.dropdown > button')) {
         const dropdowns = document.querySelectorAll('.dropdown-content');
