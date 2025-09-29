@@ -39,21 +39,24 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
+      flex-wrap: wrap; /* ✅ Permite que los links bajen de línea en pantallas pequeñas */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 8px; /* ✅ Espaciado entre enlaces */
     }
 
     nav a {
       color: #fff;
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
+      white-space: nowrap; /* ✅ Evita cortes de texto feos */
     }
 
     nav a:hover {
@@ -135,17 +138,46 @@
     }
 
     /* 🔹 Responsive */
+    @media (max-width: 1024px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+      .personaje h2 {
+        font-size: 1.6em;
+      }
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8em;
       }
-
+      nav a {
+        font-size: 0.85em;
+        margin: 0 5px;
+      }
       .personaje {
         padding: 15px;
       }
-
       .personaje h2 {
         font-size: 1.4em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      nav a {
+        font-size: 0.8em;
+        margin: 2px;
+      }
+      .personaje h2 {
+        font-size: 1.2em;
       }
     }
   </style>
@@ -158,7 +190,7 @@
   <nav>
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
-     <a href="multiversos.html">Multiversos</a>
+    <a href="multiversos.html">Multiversos</a>
     <a href="disenos.html">Diseños</a>
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
@@ -171,7 +203,6 @@
         Actualmente hay 22 universos de crónicas.
       </p>
     </section>
-  
   </main>
 
   <footer>
