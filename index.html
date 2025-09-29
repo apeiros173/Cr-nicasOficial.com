@@ -25,7 +25,7 @@
       color: #fff;
       padding: 20px 0;
       text-align: center;
-      border-bottom: 3px solid #9000ff;  /* 🔹 borde */
+      border-bottom: 3px solid #9000ff;
     }
 
     header h1 {
@@ -73,6 +73,40 @@
 
     nav a:hover:after {
       width: 100%;
+    }
+
+    /* 🔹 Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36006d;
+      min-width: 160px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9em;
+      text-transform: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #4cc9f0;
+      color: #36006d;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     /* 🔹 Contenido principal */
@@ -166,7 +200,7 @@
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
     <a href="multiversos.html">Multiversos</a>
-   <div class="dropdown">
+    <div class="dropdown">
       <a href="disenos.html">Diseños</a>
       <div class="dropdown-content">
         <a href="disenos.html">Diseños Alpha</a>
@@ -174,7 +208,7 @@
       </div>
     </div>
     <a href="animaciones.html">Animaciones</a>
-    <a href="comics">Cómics</a>
+    <a href="comics.html">Cómics</a>
   </nav>
 
   <main>
