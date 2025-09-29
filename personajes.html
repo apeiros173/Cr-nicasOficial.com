@@ -39,21 +39,26 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
+      flex-wrap: wrap; /* ✅ permite que los links bajen de línea */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 8px;
     }
 
     nav a {
       color: #fff;
-      margin: 0 15px;
+      margin: 5px 10px;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
+      white-space: normal; /* ✅ deja que el texto se divida si es largo */
+      word-break: break-word;
+      text-align: center;
     }
 
     nav a:hover {
@@ -74,7 +79,7 @@
     nav a:hover:after {
       width: 100%;
     }
-    
+
     /* 🔹 Menú desplegable */
     .dropdown {
       position: relative;
@@ -109,6 +114,32 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+
+    /* 🔹 Responsive */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        font-size: 0.85em;
+        margin: 4px 6px;
+      }
+
+      .dropdown-content {
+        position: static;   /* ✅ evita que se corte en pantallas chicas */
+        box-shadow: none;
+        border-radius: 0;
+        min-width: 100%;
+      }
+
+      .dropdown-content a {
+        padding: 8px;
+        text-align: center;
+      }
+    }
+
     /* 🔹 Contenido principal */
     main {
       max-width: 1000px;
@@ -167,21 +198,6 @@
     footer a:hover {
       text-decoration: underline;
     }
-
-    /* 🔹 Responsive */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-
-      .personaje {
-        padding: 15px;
-      }
-
-      .personaje h2 {
-        font-size: 1.4em;
-      }
-    }
   </style>
 </head>
 <body>
@@ -191,7 +207,7 @@
 
   <nav>
     <a href="index.html">Inicio</a>
-     <div class="dropdown">
+    <div class="dropdown">
       <a href="personajes.html">Personajes</a>
       <div class="dropdown-content">
         <a href="personajes.html">Principal</a>
@@ -199,10 +215,10 @@
         <a href="secundarios.html">Personajes Secundarios</a>
         <a href="antagonistas.html">Villanos y antagonistas</a>
         <a href="extras.html">Personajes Terciarios/Extras</a>
-         </div>
+      </div>
     </div>
     <a href="multiversos.html">Multiversos</a>
-      <a href="disenos.html">Diseños</a>
+    <a href="disenos.html">Diseños</a>
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
   </nav>
@@ -221,12 +237,13 @@
       <img src="skeleton.jpg" alt="Skeleton">
     </section>
 
-    <section class="personaje h2">
+    <section class="personaje">
       <h2>Calavera (Latinoamérica) / Skull (inglés)</h2>
-      <p>Calavera es un demonio en la mayoria de universos, es el hijo menor de Dark Bones,en el rubmo de la historia Calavera ha tenido muchas evoluciones o fases. Calavera tuvo un hijo de manera asexual, el se quitó un hueso y de hay 'nació'su hijo Calavera II o Benjamín en su forma civil.</p>
+      <p>Calavera es un demonio en la mayoría de universos, es el hijo menor de Dark Bones, en el rumbo de la historia Calavera ha tenido muchas evoluciones o fases. Calavera tuvo un hijo de manera asexual, él se quitó un hueso y de ahí 'nació' su hijo Calavera II o Benjamín en su forma civil.</p>
       <img src="calavera.jpg" alt="Calavera">
     </section>
-     <section class="personaje">
+
+    <section class="personaje">
       <h2>Stone</h2>
       <p>[null]</p>
     </section>
