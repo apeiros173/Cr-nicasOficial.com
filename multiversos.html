@@ -75,6 +75,40 @@
       width: 100%;
     }
 
+    /* 🔹 Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36006d;
+      min-width: 160px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.9em;
+      text-transform: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #4cc9f0;
+      color: #36006d;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     /* 🔹 Contenido principal */
     main {
       max-width: 1000px;
@@ -157,8 +191,15 @@
 
   <nav>
     <a href="index.html">Inicio</a>
-    <a href="personajes.html">Personajes</a>
-     <a href="multiversos.html">Multiversos</a>
+    <div class="dropdown">
+      <a href="personajes.html">Personajes</a>
+      <div class="dropdown-content">
+        <a href="skeleton.html">Skeleton</a>
+        <a href="calavera.html">Calavera</a>
+        <a href="otros.html">Otros personajes</a>
+      </div>
+    </div>
+    <a href="multiversos.html">Multiversos</a>
     <div class="dropdown">
       <a href="disenos.html">Diseños</a>
       <div class="dropdown-content">
@@ -182,7 +223,6 @@
         fuera Ethan Marrow. Actualmente no se le ha dado una edad concreta a ningún personaje.
       </p>
     </section>
-  
   </main>
 
   <footer>
