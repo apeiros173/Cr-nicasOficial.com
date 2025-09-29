@@ -74,6 +74,41 @@
     nav a:hover:after {
       width: 100%;
     }
+    
+    /* 🔹 Menú desplegable */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36006d;
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px 15px;
+      display: block;
+      text-align: left;
+      text-transform: capitalize;
+      transition: all 0.3s;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(255,255,255,0.1);
+      color: #4cc9f0;
+      padding-left: 20px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
     /* 🔹 Contenido principal */
     main {
       max-width: 1000px;
@@ -156,7 +191,16 @@
 
   <nav>
     <a href="index.html">Inicio</a>
-    <a href="personajes.html">Personajes</a>
+     <div class="dropdown">
+      <a href="personajes.html">Personajes</a>
+      <div class="dropdown-content">
+        <a href="personajes.html">Principal</a>
+        <a href="protas.html">Protagonistas</a>
+        <a href="secundarios.html">Personajes Secundarios</a>
+        <a href="antagonistas.html">Villanos y antagonistas</a>
+        <a href="extras.html">Personajes Terciarios/Extras</a>
+         </div>
+    </div>
     <a href="multiversos.html">Multiversos</a>
       <a href="disenos.html">Diseños</a>
     <a href="animaciones.html">Animaciones</a>
