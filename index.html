@@ -43,7 +43,7 @@
       background-color: #36006d;
       padding: 0.8rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 10px; /* separa los enlaces */
+      gap: 10px;
     }
 
     nav a {
@@ -55,7 +55,7 @@
       font-size: 0.9rem;
       position: relative;
       transition: color 0.3s;
-      white-space: nowrap; /* evita que se rompa el texto */
+      white-space: nowrap;
     }
 
     nav a:hover {
@@ -75,40 +75,6 @@
 
     nav a:hover:after {
       width: 100%;
-    }
-
-    /* 🔹 Dropdown */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #36006d;
-      min-width: 160px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-      border-radius: 6px;
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      color: #fff;
-      padding: 10px 15px;
-      text-decoration: none;
-      display: block;
-      font-size: 0.9rem;
-      text-transform: none;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #4cc9f0;
-      color: #36006d;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
     }
 
     /* 🔹 Contenido principal */
@@ -213,10 +179,9 @@
         font-size: 1.5rem;
       }
 
-      /* Mantener menú horizontal */
       nav {
-        flex-direction: row; /* horizontal */
-        flex-wrap: wrap; /* si no cabe, se ajusta ligeramente */
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 6px;
       }
@@ -244,13 +209,7 @@
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
     <a href="multiversos.html">Multiversos</a>
-    <div class="dropdown">
-      <a href="disenos.html">Diseños</a>
-      <div class="dropdown-content">
-        <a href="disenos.html">Diseños Alpha</a>
-        <a href="disenosbeta.html">Diseños Beta</a>
-      </div>
-    </div>
+    <a href="disenos.html">Diseños</a>
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
   </nav>
