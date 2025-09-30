@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiveros de Crónicas de Skeleton y Calavera</title>
+  <title>Multiversos de Crónicas de Skeleton y Calavera</title>
   <style>
     /* 🔹 Reset básico */
     * {
@@ -39,24 +39,22 @@
     /* 🔹 Menú de navegación */
     nav {
       display: flex;
-      flex-wrap: wrap; /* ✅ Se acomoda en varias líneas si es necesario */
       justify-content: center;
       background-color: #36006d;
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      gap: 8px;
+      gap: 15px;
     }
 
     nav a {
       color: #fff;
-      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
       text-transform: uppercase;
       font-size: 0.9em;
       position: relative;
       transition: color 0.3s;
-      white-space: nowrap; /* ✅ Evita que se corte el texto */
+      padding: 6px 10px;
     }
 
     nav a:hover {
@@ -76,6 +74,42 @@
 
     nav a:hover:after {
       width: 100%;
+    }
+
+    /* 🔹 Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #36006d;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      border-radius: 4px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-align: left;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #4cc9f0;
+      color: #000;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     /* 🔹 Contenido principal */
@@ -138,66 +172,45 @@
     }
 
     /* 🔹 Responsive */
-    @media (max-width: 1024px) {
-      header h1 {
-        font-size: 2.2em;
-      }
-      .personaje h2 {
-        font-size: 1.6em;
-      }
-    }
-
     @media (max-width: 768px) {
       header h1 {
         font-size: 1.8em;
       }
-      nav a {
-        font-size: 0.85em;
-        margin: 0 5px;
+
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
       }
+
       .personaje {
         padding: 15px;
       }
+
       .personaje h2 {
         font-size: 1.4em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-      nav a {
-        font-size: 0.8em;
-        margin: 2px;
-      }
-      .personaje {
-        padding: 12px;
-      }
-      .personaje h2 {
-        font-size: 1.2em;
-      }
-      .personaje p {
-        font-size: 1em;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Multiveros</h1>
+    <h1>Crónicas de Skeleton y Calavera</h1>
   </header>
 
   <nav>
     <a href="index.html">Inicio</a>
     <a href="personajes.html">Personajes</a>
     <a href="multiversos.html">Multiversos</a>
-    <a href="disenos.html">Diseños</a>
+
+    <!-- 🔹 Submenú de Diseños -->
+    <div class="dropdown">
+      <a href="disenos.html">Diseños ▼</a>
+      <div class="dropdown-content">
+        <a href="disenos.html">Diseños Alpha</a>
+        <a href="disenosbeta.html">Diseños Beta</a>
+      </div>
+    </div>
+
     <a href="animaciones.html">Animaciones</a>
     <a href="comics.html">Cómics</a>
   </nav>
@@ -206,13 +219,18 @@
     <section class="personaje">
       <h2>Skeleton</h2>
       <p>
-        Actualmente hay 22 universos de crónicas.
+        Skeleton en el universo Zeta no se sabe nada de él, sólo que es alguien que vivía en la dimensión espejo 
+        y que es la contraparte de Calavera. Mientras que desde la versión Zero en adelante, es considerado el 
+        hermano de Calavera. El hijo en el medio, hijo de Dark Bones (su padre demonio) y Evangeline (su madre 
+        humana fallecida). Skeleton en las crónicas de las versiones Zeta, 1 y 2, tiene un hijo llamado Damián 
+        que, al casarse con una humana, se convierte en semi-demonio. Skeleton decidió que su nombre humano 
+        fuera Ethan Marrow. Actualmente no se le ha dado una edad concreta a ningún personaje.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Crónicas de Skeleton y Calavera © | Todos los derechos reservados</p>
+    <p>&copy; 2025 Crónicas de Skeleton y Calavera | Todos los derechos reservados</p>
     <p>
       <a href="https://chat.whatsapp.com/EtVvuzO16MBo2XrE5TCU?mode=ems_copy_h_t">WhatsApp Group</a> |
       <a href="https://whatsapp.com/channel/0029VahXftFAInPsYO4JI601">WhatsApp Channel</a> |
